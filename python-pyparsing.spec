@@ -1,5 +1,4 @@
 
-%include	/usr/lib/rpm/macros.python
 %define 	module	pyparsing
 
 Summary:	pyparsing - a Python module for creating executing simple grammars
