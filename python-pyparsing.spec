@@ -11,7 +11,7 @@ Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/pyparsing/%{module}-%{version}.tar.gz
 # Source0-md5:	1d722a85a8617924e775caf3bb3beb9a
 URL:		http://pyparsing.sourceforge.net/
-BuildRequires:	python-devel >= 2.3.2
+BuildRequires:	python-devel >= 1:2.3.2
 Requires:	python >= 2.3.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
