@@ -4,16 +4,16 @@
 Summary:	pyparsing - a Python module for creating executing simple grammars
 Summary(pl):	pyparsing - modu³ Pythona umo¿liwiaj±cy tworzenie i parsowanie prostych gramatyk
 Name:		python-%{module}
-Version:	1.3.3
+Version:	1.4.5
 Release:	1
 License:	MIT
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/pyparsing/%{module}-%{version}.tar.gz
-# Source0-md5:	358a0210356806b39e5f7084f39f36af
+# Source0-md5:	d4a9108e7a4e4aacda28f055d8cb4f89
 URL:		http://pyparsing.sourceforge.net/
-BuildRequires:	python-devel >= 1:2.3.2
+BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	python-modules
-Requires:	python >= 2.3.2
+BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-libs
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -68,10 +68,9 @@ install -d $RPM_BUILD_ROOT{%{py_sitescriptdir},%{_examplesdir}/%{name}-%{version
 
 python setup.py install \
 	--root=$RPM_BUILD_ROOT \
-	--install-lib=%{py_sitescriptdir} \
 	--optimize=2
 
-find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py -exec rm {} \;
+%py_postclean
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -81,7 +80,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES README
-%{py_sitescriptdir}/pyparsing.py[oc]
+%{py_sitescriptdir}/pyparsing.py[co]
+%{py_sitescriptdir}/pyparsing-*.egg-info
 
 %files doc
 %defattr(644,root,root,755)
