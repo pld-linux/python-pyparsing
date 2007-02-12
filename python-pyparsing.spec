@@ -2,7 +2,7 @@
 %define 	module	pyparsing
 
 Summary:	pyparsing - a Python module for creating executing simple grammars
-Summary(pl):	pyparsing - modu≥ Pythona umoøliwiaj±cy tworzenie i parsowanie prostych gramatyk
+Summary(pl.UTF-8):   pyparsing - modu≈Ç Pythona umo≈ºliwiajƒÖcy tworzenie i parsowanie prostych gramatyk
 Name:		python-%{module}
 Version:	1.4.5
 Release:	1
@@ -25,36 +25,36 @@ the use of regular expressions. The parsing module provides a library
 of classes that client code uses to construct the grammar directly in
 Python code.
 
-%description -l pl
-Modu≥ pyparsing umoøliwia tworzenie i parsowanie prostych gramatyk w
-sposÛb odmienny od podej∂cia tradycyjnego, jakim jest zwykle uøycie
-pary lex/yacc lub wyraøeÒ regularnych. Modu≥ ten udostÍpnia bibliotekÍ
-klas, przy pomocy ktÛrych gramatyka tworzona jest wprost w kodzie
+%description -l pl.UTF-8
+Modu≈Ç pyparsing umo≈ºliwia tworzenie i parsowanie prostych gramatyk w
+spos√≥b odmienny od podej≈õcia tradycyjnego, jakim jest zwykle u≈ºycie
+pary lex/yacc lub wyra≈ºe≈Ñ regularnych. Modu≈Ç ten udostƒôpnia bibliotekƒô
+klas, przy pomocy kt√≥rych gramatyka tworzona jest wprost w kodzie
 Pythona.
 
 %package doc
 Summary:	Documentation for pyparsing module
-Summary(pl):	Dokumentacja do modu≥u pyparsing
+Summary(pl.UTF-8):   Dokumentacja do modu≈Çu pyparsing
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 
 %description doc
 This package contains documentation files for pyparsing Python module.
 
-%description doc -l pl
-Pakiet zawieraj±cy dokumentacjÍ dla modu≥u Pythona pyparsing.
+%description doc -l pl.UTF-8
+Pakiet zawierajƒÖcy dokumentacjƒô dla modu≈Çu Pythona pyparsing.
 
 %package examples
 Summary:	Examples for pyparsing module
-Summary(pl):	Przyk≥ady do modu≥u pyparsing
+Summary(pl.UTF-8):   Przyk≈Çady do modu≈Çu pyparsing
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 
 %description examples
 This package contains example files for pyparsing Python module.
 
-%description examples -l pl
-Pakiet zawieraj±cy przyk≥adowe skrypty dla modu≥u Pythona pyparsing.
+%description examples -l pl.UTF-8
+Pakiet zawierajƒÖcy przyk≈Çadowe skrypty dla modu≈Çu Pythona pyparsing.
 
 %prep
 %setup -q -n %{module}-%{version}
