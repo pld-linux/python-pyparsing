@@ -2,7 +2,7 @@
 %define 	module	pyparsing
 
 Summary:	pyparsing - a Python module for creating executing simple grammars
-Summary(pl.UTF-8):   pyparsing - moduł Pythona umożliwiający tworzenie i parsowanie prostych gramatyk
+Summary(pl.UTF-8):	pyparsing - moduł Pythona umożliwiający tworzenie i parsowanie prostych gramatyk
 Name:		python-%{module}
 Version:	1.4.5
 Release:	1
@@ -34,7 +34,7 @@ Pythona.
 
 %package doc
 Summary:	Documentation for pyparsing module
-Summary(pl.UTF-8):   Dokumentacja do modułu pyparsing
+Summary(pl.UTF-8):	Dokumentacja do modułu pyparsing
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 
@@ -46,7 +46,7 @@ Pakiet zawierający dokumentację dla modułu Pythona pyparsing.
 
 %package examples
 Summary:	Examples for pyparsing module
-Summary(pl.UTF-8):   Przykłady do modułu pyparsing
+Summary(pl.UTF-8):	Przykłady do modułu pyparsing
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 
