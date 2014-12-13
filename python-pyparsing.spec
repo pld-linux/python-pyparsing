@@ -14,8 +14,11 @@ Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/pyparsing/%{module}-%{version}.tar.gz
 # Source0-md5:	37adec94104b98591507218bc82e7c31
 URL:		http://pyparsing.sourceforge.net/
+BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.219
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.5
+BuildRequires:	python-distribute
 BuildRequires:	python-modules
 %endif
 %if %{with python3}
@@ -23,8 +26,7 @@ BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
 BuildRequires:	python3-modules
 %endif
-BuildRequires:	rpm-pythonprov
-%pyrequires_eq	python-libs
+Requires:	python-libs
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -89,20 +91,13 @@ Pakiet zawierający przykładowe skrypty dla modułu Pythona pyparsing.
 %setup -q -n %{module}-%{version}
 
 %build
-rm -rf build-2 build-3
-install -d build-2 build-3
 %if %{with python2}
-cp -a [^b]* build-2
-cd build-2
-%{__python} setup.py build_ext
-cd ..
+%{__python} setup.py build --build-base build-2
 %endif
 
 %if %{with python3}
-cp -a [^b]* build-3
-cd build-3
-%{__python3} setup.py build_ext
-cd ..
+CFLAGS="%{rpmcppflags} %{rpmcflags}" \
+%{__python3} setup.py build --build-base build-3
 %endif
 
 %install
@@ -110,23 +105,21 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{py_sitescriptdir},%{_examplesdir}/%{name}-%{version}}
 
 %if %{with python2}
-cd build-2
 %{__python} setup.py \
-	install \
+	build --build-base build-2 \
+	install --skip-build \
 	--optimize=2 \
 	--root=$RPM_BUILD_ROOT
 
 %py_postclean
-cd ..
 %endif
 
 %if %{with python3}
-cd build-3
 %{__python3} setup.py \
-	install \
+	build --build-base build-3 \
+	install --skip-build \
 	--optimize=2 \
 	--root=$RPM_BUILD_ROOT
-cd ..
 %endif
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
