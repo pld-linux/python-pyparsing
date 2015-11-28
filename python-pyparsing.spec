@@ -92,12 +92,12 @@ Pakiet zawierający przykładowe skrypty dla modułu Pythona pyparsing.
 
 %build
 %if %{with python2}
-%{__python} setup.py build --build-base build-2
+%py_build
 %endif
 
 %if %{with python3}
 CFLAGS="%{rpmcppflags} %{rpmcflags}" \
-%{__python3} setup.py build --build-base build-3
+%py3_build
 %endif
 
 %install
@@ -105,21 +105,13 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{py_sitescriptdir},%{_examplesdir}/%{name}-%{version}}
 
 %if %{with python2}
-%{__python} setup.py \
-	build --build-base build-2 \
-	install --skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 %py_postclean
 %endif
 
 %if %{with python3}
-%{__python3} setup.py \
-	build --build-base build-3 \
-	install --skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py3_install
 %endif
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
