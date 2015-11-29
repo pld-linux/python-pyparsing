@@ -15,7 +15,7 @@ Source0:	http://downloads.sourceforge.net/pyparsing/%{module}-%{version}.tar.gz
 # Source0-md5:	37adec94104b98591507218bc82e7c31
 URL:		http://pyparsing.sourceforge.net/
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	python-distribute
