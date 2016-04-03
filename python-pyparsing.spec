@@ -7,24 +7,24 @@
 Summary:	pyparsing - a Python module for creating executing simple grammars
 Summary(pl.UTF-8):	pyparsing - moduł Pythona umożliwiający tworzenie i parsowanie prostych gramatyk
 Name:		python-%{module}
-Version:	2.0.1
-Release:	4
+Version:	2.1.1
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/pyparsing/%{module}-%{version}.tar.gz
-# Source0-md5:	37adec94104b98591507218bc82e7c31
+# Source0-md5:	5ce9096d94f553e2bc1fd366fba65558
 URL:		http://pyparsing.sourceforge.net/
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.710
+BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
-BuildRequires:	python-devel >= 1:2.5
-BuildRequires:	python-distribute
-BuildRequires:	python-modules
+BuildRequires:	python-devel >= 1:2.6
+BuildRequires:	python-modules >= 1:2.6
+BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3-devel
-BuildRequires:	python3-distribute
-BuildRequires:	python3-modules
+BuildRequires:	python3-devel >= 1:3.3
+BuildRequires:	python3-modules >= 1:3.3
+BuildRequires:	python3-setuptools
 %endif
 Requires:	python-libs
 BuildArch:	noarch
@@ -96,7 +96,6 @@ Pakiet zawierający przykładowe skrypty dla modułu Pythona pyparsing.
 %endif
 
 %if %{with python3}
-CFLAGS="%{rpmcppflags} %{rpmcflags}" \
 %py3_build
 %endif
 
@@ -122,7 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc CHANGES README
+%doc CHANGES LICENSE README
 %{py_sitescriptdir}/pyparsing.py[co]
 %{py_sitescriptdir}/pyparsing-*.egg-info
 %endif
@@ -130,7 +129,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc CHANGES README
+%doc CHANGES LICENSE README
 %{py3_sitescriptdir}/pyparsing.py
 %{py3_sitescriptdir}/__pycache__/pyparsing*.py[co]
 %{py3_sitescriptdir}/pyparsing-*.egg-info
