@@ -2,6 +2,7 @@
 # Conditional build:
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
+%bcond_without  setuptools # build without setuptools (for bootstraping)
 
 %define 	module	pyparsing
 Summary:	pyparsing - a Python module for creating executing simple grammars
@@ -19,12 +20,12 @@ BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.6
 BuildRequires:	python-modules >= 1:2.6
-BuildRequires:	python-setuptools
+%{?with_setuptools:BuildRequires:	python-setuptools}
 %endif
 %if %{with python3}
 BuildRequires:	python3-devel >= 1:3.3
 BuildRequires:	python3-modules >= 1:3.3
-BuildRequires:	python3-setuptools
+%{?with_setuptools:BuildRequires:	python3-setuptools}
 %endif
 Requires:	python-libs
 BuildArch:	noarch
