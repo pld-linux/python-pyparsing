@@ -9,7 +9,7 @@ Summary:	pyparsing - Python 2 module for creating executing simple grammars
 Summary(pl.UTF-8):	pyparsing - moduł Pythona 2 umożliwiający tworzenie i parsowanie prostych gramatyk
 Name:		python-%{module}
 Version:	2.4.2
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pyparsing/
@@ -143,9 +143,11 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitescriptdir}/pyparsing-*.egg-info
 %endif
 
+%if %{with doc}
 %files doc
 %defattr(644,root,root,755)
 %doc docs/_build/html/{_static,*.html,*.js}
+%endif
 
 %files examples
 %defattr(644,root,root,755)
