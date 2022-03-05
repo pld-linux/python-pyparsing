@@ -8,13 +8,14 @@
 Summary:	pyparsing - Python 2 module for creating executing simple grammars
 Summary(pl.UTF-8):	pyparsing - moduł Pythona 2 umożliwiający tworzenie i parsowanie prostych gramatyk
 Name:		python-%{module}
-Version:	2.4.6
-Release:	4
+# keep 2.x here for python2 support
+Version:	2.4.7
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pyparsing/
 Source0:	https://files.pythonhosted.org/packages/source/p/pyparsing/%{module}-%{version}.tar.gz
-# Source0-md5:	29733ea8cbee0291aad121c69c6e51a1
+# Source0-md5:	f0953e47a0112f7a65aec2305ffdf7b4
 URL:		https://github.com/pyparsing/pyparsing/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -28,7 +29,7 @@ BuildRequires:	python3-devel >= 1:3.3
 BuildRequires:	python3-modules >= 1:3.3
 BuildRequires:	python3-setuptools
 %endif
-%{?with_doc:BuildRequires:	sphinx-pdg}
+%{?with_doc:BuildRequires:	sphinx-pdg-2}
 Requires:	python-modules >= 1:2.6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -104,7 +105,8 @@ Pakiet zawierający przykładowe skrypty dla modułu Pythona pyparsing.
 %endif
 
 %if %{with doc}
-%{__make} -C docs html
+%{__make} -C docs html \
+	SPHINXBUILD=sphinx-build-2
 %endif
 
 %install
